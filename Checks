@@ -1,0 +1,12 @@
+Do no test with more than 200 philosophers.
+Do no test with time_to_die or time_to_eat or time_to_sleep set to values lower than 60ms.
+Test 1 800 200 200 . The philosopher should not eat and should die.
+Test 5 800 200 200. No philosopher should die.
+Test 5 800 200 200 7. No Philosopher should die and simulation should stop when every philosopher has eaten at least 7 times. 
+****./philo 5 800 200 200 7 | grep "is eating" | awk '{print $2}' | sort | uniq -c ***
+Test 4 410 200 200. No philosopher should die.
+Test 4 310 200 100. One Philosopher should die.
+*** ./philo 4 310 200 100 | tee >(grep "died" > died_log.txt) | grep "is eating" ***  or 
+*** /philo 4 310 200 100 | grep "died" ***
+Test with 2 philosophers and check the differen times: a death delayed by more than 10ms is unacceptable.
+Test with any values of your choice to verify all the requirements. Ensure philosophers die at the right time, that they don't steal forks, and so forth. 
